@@ -56,7 +56,6 @@ const DetailsPage = () => {
   const completedDays = habit?.completionHistory?.filter((date) =>
     last30Days.includes(date)
   );
-
   const progress = (completedDays?.length / 30) * 100;
 
   const today = new Date();
@@ -89,7 +88,10 @@ const DetailsPage = () => {
     <div>
       <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden my-10">
         <img
-          src={habit?.image}
+          src={
+            habit?.image ||
+            "https://www.notion.com/_next/image?url=https%3A%2F%2Fs3.us-west-2.amazonaws.com%2Fpublic.notion-static.com%2Ftemplate%2Fadbcd993-4a55-45f4-9940-8ec038880085%2F1725343645903%2Fdesktop.jpg&w=3840&q=75"
+          }
           alt={habit?.title}
           className="w-full h-64 object-cover"
         />

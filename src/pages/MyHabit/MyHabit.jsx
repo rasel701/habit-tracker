@@ -3,10 +3,12 @@ import { UserAuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const MyHabit = () => {
   const { user } = useContext(UserAuthContext);
   const [habits, setHabits] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const myHabitFun = async () => {
@@ -20,7 +22,7 @@ const MyHabit = () => {
       }
     };
     myHabitFun();
-  }, [user.email]);
+  }, [user.email, refresh]);
 
   const handleDelete = async (id) => {
     Swal.fire({
@@ -60,19 +62,53 @@ const MyHabit = () => {
 
   const handleMarkComplete = async (id, email) => {
     console.log({ id, email });
-    // try {
-    //   const res = await axios(
-    //     `http://localhost:3000/mark-complete/${id}?userEmail=${user.email}`
-    //   );
-    //   toast.success(res.data.message);
-    //   setRefresh(!refresh);
-    // } catch (error) {
-    //   if (error.response) {
-    //     toast.error(error.response.data.message);
-    //   } else {
-    //     console.log("Something went wrong!");
-    //   }
-    // }
+    try {
+      const res = await axios(
+        `http://localhost:3000/mark-complete/${id}?userEmail=${email}`
+      );
+      toast.success(res.data.message);
+      setRefresh(!refresh);
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      } else {
+        console.log("Something went wrong!");
+      }
+    }
+  };
+
+  const calculateStreak = (completionHistory) => {
+    if (!completionHistory || completionHistory.length === 0) return 0;
+
+    const sortedHistory = completionHistory
+      .map((d) => new Date(d))
+      .sort((a, b) => b - a);
+
+    let streak = 0;
+    let currentDate = new Date();
+
+    while (true) {
+      const dateStr =
+        currentDate.getMonth() +
+        1 +
+        "/" +
+        currentDate.getDate() +
+        "/" +
+        currentDate.getFullYear();
+
+      const formattedHistory = sortedHistory.map(
+        (d) => d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear()
+      );
+
+      if (formattedHistory.includes(dateStr)) {
+        streak++;
+        currentDate.setDate(currentDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+
+    return streak;
   };
 
   return (
@@ -126,7 +162,7 @@ const MyHabit = () => {
                           : "bg-red-100 text-red-800"
                       }`}
                     >
-                      {habit?.completionHistory.length} days
+                      {calculateStreak(habit?.completionHistory)} days
                     </span>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm md:text-base text-gray-500">
