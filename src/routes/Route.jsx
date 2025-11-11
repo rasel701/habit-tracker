@@ -19,6 +19,7 @@ const route = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: () => axios("http://localhost:3000/habit-latest"),
       },
       {
         path: "/my-habit",

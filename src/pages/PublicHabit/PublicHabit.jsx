@@ -50,7 +50,9 @@ const PublicHabit = () => {
 
   return (
     <div className="">
-      <h2 className="text-4xl text-center my-7">All public habits</h2>
+      <h2 className="text-4xl text-center my-7 font-bold text-gray-500">
+        All public habits
+      </h2>
       <div className="flex justify-between max-w-[90%] mx-auto md:flex-row flex-col">
         <div className="flex-1">
           <form
