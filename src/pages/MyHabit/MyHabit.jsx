@@ -58,6 +58,23 @@ const MyHabit = () => {
     });
   };
 
+  const handleMarkComplete = async (id, email) => {
+    console.log({ id, email });
+    // try {
+    //   const res = await axios(
+    //     `http://localhost:3000/mark-complete/${id}?userEmail=${user.email}`
+    //   );
+    //   toast.success(res.data.message);
+    //   setRefresh(!refresh);
+    // } catch (error) {
+    //   if (error.response) {
+    //     toast.error(error.response.data.message);
+    //   } else {
+    //     console.log("Something went wrong!");
+    //   }
+    // }
+  };
+
   return (
     <div className="p-4 md:p-6 bg-gray-100 min-h-screen">
       <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">
@@ -128,7 +145,12 @@ const MyHabit = () => {
                     >
                       Delete
                     </button>
-                    <button className="px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition cursor-pointer">
+                    <button
+                      onClick={() =>
+                        handleMarkComplete(habit._id, habit.userEmail)
+                      }
+                      className="px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition cursor-pointer"
+                    >
                       Mark Complete
                     </button>
                   </td>
