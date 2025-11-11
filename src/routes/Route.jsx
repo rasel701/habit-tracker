@@ -66,8 +66,6 @@ const route = createBrowserRouter([
             <DetailsPage />
           </ProtectedRoute>
         ),
-        loader: ({ params }) =>
-          axios(`http://localhost:3000/habit-info/${params.id}`),
       },
     ],
   },
