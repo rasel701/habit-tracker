@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 import { TbClockHour2Filled } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
+import { motion } from "motion/react";
 
 const PublicHabitCard = ({ item }) => {
   const {
@@ -15,8 +16,12 @@ const PublicHabitCard = ({ item }) => {
     createAt,
   } = item;
   return (
-    <div>
-      <div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border">
+    <>
+      <motion.div
+        whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
+        transition={{ duration: 0.5 }}
+        className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border mt-3"
+      >
         <img
           src={
             image ||
@@ -54,8 +59,8 @@ const PublicHabitCard = ({ item }) => {
             </Link>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </>
   );
 };
 

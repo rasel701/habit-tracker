@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import PublicHabitCard from "../../components/PublicHabitCard/PublicHabitCard";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const PublicHabit = () => {
   const { data } = useLoaderData();
   const [habits, setHabits] = useState(data);
   const [allCategory, setAllCategory] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const uniqueCategories = [...new Set(data.map((item) => item.category))];
     setAllCategory(uniqueCategories);
@@ -34,7 +36,6 @@ const PublicHabit = () => {
   const handleInputSubmit = async (e) => {
     e.preventDefault();
     const search = e.target.search.value;
-    console.log(search);
 
     try {
       const result = await axios(
