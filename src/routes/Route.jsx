@@ -7,6 +7,9 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PublicHabit from "../pages/PublicHabit/PublicHabit";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import Update from "../pages/Update/Update";
+import axios from "axios";
+import DetailsPage from "../pages/DetailsPage/DetailsPage";
 
 const route = createBrowserRouter([
   {
@@ -44,6 +47,27 @@ const route = createBrowserRouter([
       {
         path: "/public-habit",
         Component: PublicHabit,
+        loader: () => axios("http://localhost:3000/habit-info"),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <ProtectedRoute>
+            <Update />
+          </ProtectedRoute>
+        ),
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/habit-info/${params.id}`),
+      },
+      {
+        path: "/details-page/:id",
+        element: (
+          <ProtectedRoute>
+            <DetailsPage />
+          </ProtectedRoute>
+        ),
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/habit-info/${params.id}`),
       },
     ],
   },

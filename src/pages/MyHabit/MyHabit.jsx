@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { UserAuthContext } from "../../contexts/AuthContext";
 import axios from "axios";
+import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 const MyHabit = () => {
   const { user } = useContext(UserAuthContext);
@@ -19,6 +21,42 @@ const MyHabit = () => {
     };
     myHabitFun();
   }, [user.email]);
+
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const result = await axios.delete(
+            `http://localhost:3000/habit-info/${id}`
+          );
+          const response = result.data;
+          console.log(response);
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your habit has been deleted.",
+            icon: "success",
+          });
+
+          setHabits((prev) => prev.filter((habit) => habit._id !== id));
+        } catch (error) {
+          console.error(error);
+          Swal.fire({
+            title: "Error!",
+            text: "Something went wrong.",
+            icon: "error",
+          });
+        }
+      }
+    });
+  };
 
   return (
     <div className="p-4 md:p-6 bg-gray-100 min-h-screen">
@@ -78,10 +116,16 @@ const MyHabit = () => {
                     {habit?.createAt}
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-sm md:text-base text-center flex flex-col md:flex-row justify-center gap-2">
-                    <button className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition cursor-pointer">
+                    <Link
+                      to={`/update/${habit._id}`}
+                      className="px-2 py-1 bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition cursor-pointer"
+                    >
                       Update
-                    </button>
-                    <button className="px-2 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition cursor-pointer">
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(habit._id)}
+                      className="px-2 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition cursor-pointer"
+                    >
                       Delete
                     </button>
                     <button className="px-2 py-1 bg-green-100 text-green-700 rounded hover:bg-green-200 transition cursor-pointer">
