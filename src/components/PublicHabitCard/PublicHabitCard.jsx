@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
+import { TbClockHour2Filled } from "react-icons/tb";
+import { FaUser } from "react-icons/fa";
 
 const PublicHabitCard = ({ item }) => {
   const {
@@ -33,10 +35,14 @@ const PublicHabitCard = ({ item }) => {
           <h2 className="text-lg font-bold text-gray-800">{title}</h2>
           <p className="text-gray-600 text-sm">{description}</p>
           <div className="flex justify-between items-center pt-3">
-            <p className="text-sm text-gray-500">
-              ⏰ Reminder: <span className="font-medium">{reminderTime}</span>
-            </p>
-            <p className="text-sm text-gray-500">👤 {userName}</p>
+            <div className="text-sm text-gray-500 flex items-center gap-2">
+              <TbClockHour2Filled size={20} /> Reminder:{" "}
+              <span className="font-medium">{reminderTime}</span>
+            </div>
+            <div className="text-sm text-gray-500 flex items-center gap-2">
+              <FaUser size={20} />
+              <span>{userName}</span>
+            </div>
           </div>
 
           <div className="pt-4">

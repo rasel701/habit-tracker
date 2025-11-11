@@ -58,6 +58,8 @@ const DetailsPage = () => {
   );
   const progress = (completedDays?.length / 30) * 100;
 
+  console.log(completedDays);
+
   const today = new Date();
   const todayStr =
     today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
@@ -82,6 +84,7 @@ const DetailsPage = () => {
     }
   }
 
+  console.log(progress);
   console.log(habit);
 
   return (
