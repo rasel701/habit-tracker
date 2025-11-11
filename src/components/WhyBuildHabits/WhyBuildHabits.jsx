@@ -1,4 +1,7 @@
+import Aos from "aos";
+import { useEffect } from "react";
 import { FaBrain, FaSmile, FaBolt, FaHeart } from "react-icons/fa";
+import "aos/dist/aos.css";
 
 const WhyBuildHabits = () => {
   const benefits = [
@@ -24,6 +27,13 @@ const WhyBuildHabits = () => {
     },
   ];
 
+  useEffect(() => {
+    Aos.init({
+      duration: 2000, // animation সময়
+      once: false, // ❗ scroll করলে বারবার animation হবে
+    });
+  }, []);
+
   return (
     <section className="py-16 bg-gray-50">
       <h2 className="text-3xl font-bold text-center mb-10 text-gray-500">
@@ -33,6 +43,7 @@ const WhyBuildHabits = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
         {benefits.map((item, index) => (
           <div
+            data-aos="fade-down-left"
             key={index}
             className="bg-white shadow-md rounded-2xl p-6 text-center hover:shadow-lg transition"
           >
