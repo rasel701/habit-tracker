@@ -25,7 +25,7 @@ const MyHabit = () => {
       }
     };
     myHabitFun();
-  }, [user.email]);
+  }, [user.email, refresh]);
 
   const handleDelete = async (id) => {
     Swal.fire({
