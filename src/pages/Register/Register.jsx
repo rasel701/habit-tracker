@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { UserAuthContext } from "../../contexts/AuthContext";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { registerUser, googleLogin, setUser } = useContext(UserAuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -34,6 +36,7 @@ const Register = () => {
             setUser({ ...result, displayName: name, photoURL: photo });
             toast.success("Registration successful!");
             e.target.reset();
+            navigate(location.state || "/");
           })
           .catch((error) => {
             toast.error(error.message);
@@ -47,8 +50,8 @@ const Register = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
-        console.log(res);
         toast.success("Google login successfully");
+        navigate(location.state || "/");
       })
       .catch((error) => {
         toast.error(error);
@@ -143,7 +146,7 @@ const Register = () => {
                 </div>
 
                 <button type="submit" className="btn-all w-full rounded-full">
-                  Login
+                  Register
                 </button>
               </form>
 

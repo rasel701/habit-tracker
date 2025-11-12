@@ -3,7 +3,7 @@ import { MagnifyingGlass } from "react-loader-spinner";
 
 const Loading = () => {
   return (
-    <div>
+    <div className="flex justify-center items-center h-screen">
       <MagnifyingGlass
         visible={true}
         height="150"

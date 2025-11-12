@@ -10,10 +10,13 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import Update from "../pages/Update/Update";
 import axios from "axios";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
+import Loading from "../components/Loading/Loading";
+import NotFound from "../pages/NotFound/NotFound";
 
 const route = createBrowserRouter([
   {
     path: "/",
+    hydrateFallbackElement: <Loading />,
     element: <Root />,
     children: [
       {
@@ -69,6 +72,10 @@ const route = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 export default route;

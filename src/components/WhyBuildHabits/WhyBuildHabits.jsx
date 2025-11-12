@@ -29,8 +29,8 @@ const WhyBuildHabits = () => {
 
   useEffect(() => {
     Aos.init({
-      duration: 2000, // animation সময়
-      once: false, // ❗ scroll করলে বারবার animation হবে
+      duration: 2000, 
+      once: false, 
     });
   }, []);
 

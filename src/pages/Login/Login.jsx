@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 
 import { FcGoogle } from "react-icons/fc";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { UserAuthContext } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
 const Login = () => {
   const { loginUser, googleLogin } = useContext(UserAuthContext);
   const location = useLocation();
   console.log(location);
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -17,6 +18,7 @@ const Login = () => {
         if (res.user) {
           toast.success("Login successfully");
           e.target.reset();
+          navigate(location.state || "/");
         }
       })
       .catch((error) => {
@@ -27,10 +29,11 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
-        console.log(res);
+        toast.success("Google login successfully");
+        navigate(location.state || "/");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error);
       });
   };
 
@@ -64,7 +67,7 @@ const Login = () => {
                 <input
                   name="email"
                   type="email"
-                  placeholder="Email Address"
+                  // placeholder="Email Address"
                   className="w-full input input-bordered bg-white text-gray-800 border-none h-14 text-lg placeholder-gray-400"
                   required
                 />
@@ -80,7 +83,7 @@ const Login = () => {
                 <input
                   name="password"
                   type="password"
-                  placeholder="Password"
+                  // placeholder="Password"
                   className="w-full input input-bordered bg-white text-gray-800 border-none h-14 text-lg placeholder-gray-400"
                   required
                 />
