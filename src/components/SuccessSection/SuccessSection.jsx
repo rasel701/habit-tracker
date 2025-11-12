@@ -35,8 +35,8 @@ const SuccessSection = () => {
   ];
   useEffect(() => {
     Aos.init({
-      duration: 2000, // animation সময়
-      once: false, // ❗ scroll করলে বারবার animation হবে
+      duration: 2000,
+      once: false,
     });
   }, []);
   return (
@@ -44,7 +44,7 @@ const SuccessSection = () => {
       <h2 className="text-3xl font-bold mb-10 text-center text-gray-500 ">
         Advice from Successful People
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-5 justify-items-center gap-8  items-center">
         {quotes.map((item, index) => (
           <div key={index} className="">
             <div
