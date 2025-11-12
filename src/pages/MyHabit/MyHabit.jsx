@@ -44,7 +44,7 @@ const MyHabit = () => {
             { headers: { authorization: `Bearer ${user.accessToken}` } }
           );
           const response = result.data;
-          console.log(response);
+          // console.log(response);
           Swal.fire({
             title: "Deleted!",
             text: "Your habit has been deleted.",
@@ -65,7 +65,7 @@ const MyHabit = () => {
   };
 
   const handleMarkComplete = async (id, email) => {
-    console.log({ id, email });
+    // console.log({ id, email });
     try {
       const res = await axios(
         `https://habit-server-psi.vercel.app/mark-complete/${id}?userEmail=${email}`
@@ -76,7 +76,7 @@ const MyHabit = () => {
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
-        console.log("Something went wrong!");
+        toast.error("Something went wrong!");
       }
     }
   };

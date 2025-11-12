@@ -28,7 +28,7 @@ const AddHabit = () => {
       completionHistory: [],
       createAt: new Date().toLocaleDateString(),
     };
-    console.log(newHabit);
+    // console.log(newHabit);
     try {
       const result = await axios.post(
         "https://habit-server-psi.vercel.app/habit-info",

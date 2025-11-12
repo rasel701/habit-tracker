@@ -6,7 +6,7 @@ import Loading from "../components/Loading/Loading";
 
 const Root = () => {
   const navigation = useNavigation();
-  console.log(navigation);
+  // console.log(navigation);
   return (
     <div>
       <header>

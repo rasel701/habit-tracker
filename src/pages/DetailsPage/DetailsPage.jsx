@@ -47,7 +47,7 @@ const DetailsPage = () => {
   );
   const progress = (completedDays?.length / 30) * 100;
 
-  console.log(completedDays);
+  // console.log(completedDays);
 
   const today = new Date();
   const todayStr =

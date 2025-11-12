@@ -6,7 +6,7 @@ import { Navigate, useLocation } from "react-router";
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useContext(UserAuthContext);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   if (loading) {
     return <Loading />;
   }

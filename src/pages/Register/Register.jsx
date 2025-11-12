@@ -15,7 +15,7 @@ const Register = () => {
     const photo = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log({ name, photo, email, password });
+    // console.log({ name, photo, email, password });
     if (password.length < 6) {
       return toast.error("Length must be at least 6 characters");
     } else if (!/[A-Z]/.test(password)) {

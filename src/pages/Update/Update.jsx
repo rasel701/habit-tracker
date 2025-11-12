@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const Update = () => {
   const { data } = useLoaderData();
-  console.log(data);
+  // console.log(data);
   const navigate = useNavigate();
 
   const handleAddHabit = async (e) => {
