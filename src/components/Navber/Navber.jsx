@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { UserAuthContext } from "../../contexts/AuthContext";
-import { FaRegUserCircle } from "react-icons/fa";
-import { MdMarkEmailRead } from "react-icons/md";
 import { toast } from "react-toastify";
+import CustomNavLink from "../CustomNavLink/CustomNavLink";
 
 const Navber = () => {
   const { user, logoutUser } = useContext(UserAuthContext);
@@ -19,24 +18,16 @@ const Navber = () => {
   const links = (
     <>
       <li>
-        <NavLink className="text-lg font-semibold" to={"/"}>
-          Home
-        </NavLink>
+        <CustomNavLink to={"/"}>Home</CustomNavLink>
       </li>
       <li>
-        <NavLink className="text-lg font-semibold" to={"/public-habit"}>
-          Public Habits
-        </NavLink>
+        <CustomNavLink to={"/public-habit"}>Public Habits</CustomNavLink>
       </li>
       <li>
-        <NavLink className="text-lg font-semibold" to={"/add-habit"}>
-          Add Habit
-        </NavLink>
+        <CustomNavLink to={"/add-habit"}>Add Habit</CustomNavLink>
       </li>
       <li>
-        <NavLink className="text-lg font-semibold" to={"/my-habit"}>
-          My Habit
-        </NavLink>
+        <CustomNavLink to={"/my-habit"}>My Habit</CustomNavLink>
       </li>
     </>
   );
