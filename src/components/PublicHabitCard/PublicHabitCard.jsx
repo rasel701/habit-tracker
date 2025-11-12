@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import { TbClockHour2Filled } from "react-icons/tb";
 import { FaUser } from "react-icons/fa";
 import { motion } from "motion/react";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const PublicHabitCard = ({ item }) => {
   const {
@@ -15,10 +17,11 @@ const PublicHabitCard = ({ item }) => {
     userName,
     createAt,
   } = item;
+
   return (
     <>
       <motion.div
-        whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
+        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
         transition={{ duration: 0.5 }}
         className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 border mt-3"
       >
@@ -37,8 +40,10 @@ const PublicHabitCard = ({ item }) => {
             </span>
             <span className="text-xs text-gray-500">{createAt}</span>
           </div>
+
           <h2 className="text-lg font-bold text-gray-800">{title}</h2>
           <p className="text-gray-600 text-sm">{description}</p>
+
           <div className="flex justify-between items-center pt-3">
             <div className="text-sm text-gray-500 flex items-center gap-2">
               <TbClockHour2Filled size={20} /> Reminder:{" "}
@@ -52,11 +57,20 @@ const PublicHabitCard = ({ item }) => {
 
           <div className="pt-4">
             <Link
+              id={`details-${_id}`}
               to={`/details-page/${_id}`}
               className="w-full bg-purple-600 text-white font-medium py-3 rounded-lg hover:bg-purple-700 transition shadow-md cursor-pointer block text-center"
             >
               See Details
             </Link>
+
+            <Tooltip
+              anchorSelect={`#details-${_id}`}
+              place="top"
+              className="!bg-purple-600 !text-white !rounded-lg !px-3 !py-1 !text-sm shadow-md"
+            >
+              Click to see full habit info
+            </Tooltip>
           </div>
         </div>
       </motion.div>

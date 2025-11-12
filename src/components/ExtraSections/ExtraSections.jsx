@@ -5,7 +5,6 @@ import { FaUsers, FaChartLine, FaBrain, FaHandsHelping } from "react-icons/fa";
 const ExtraSections = () => {
   return (
     <div className="max-w-[90%] mx-auto my-20 space-y-24">
-      {/* 🌱 Section 1: Why Build Positive Habits */}
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +74,6 @@ const ExtraSections = () => {
         </div>
       </motion.div>
 
-      {/* 🌍 Section 2: Join Our Habit-Building Community */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
