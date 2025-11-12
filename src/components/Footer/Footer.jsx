@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
   FaLinkedinIn,
   FaEnvelope,
   FaPhone,
 } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { TbHandLoveYou } from "react-icons/tb";
 
 const Footer = () => {
@@ -49,7 +49,7 @@ const Footer = () => {
                 className="p-2 rounded-md bg-gray-800 hover:bg-gray-700"
                 aria-label="twitter"
               >
-                <FaTwitter />
+                <FaSquareXTwitter />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.08 }}
