@@ -16,7 +16,7 @@ const MyHabit = () => {
     const myHabitFun = async () => {
       try {
         const result = await axios(
-          `http://localhost:3000/my-habit?email=${user.email}`
+          `https://habit-server-psi.vercel.app/my-habit?email=${user.email}`
         );
         setHabits(result.data);
         setRefresh(false);
@@ -40,7 +40,7 @@ const MyHabit = () => {
       if (result.isConfirmed) {
         try {
           const result = await axios.delete(
-            `http://localhost:3000/habit-info/${id}?email=${user.email}`,
+            `https://habit-server-psi.vercel.app/habit-info/${id}?email=${user.email}`,
             { headers: { authorization: `Bearer ${user.accessToken}` } }
           );
           const response = result.data;
@@ -68,7 +68,7 @@ const MyHabit = () => {
     console.log({ id, email });
     try {
       const res = await axios(
-        `http://localhost:3000/mark-complete/${id}?userEmail=${email}`
+        `https://habit-server-psi.vercel.app/mark-complete/${id}?userEmail=${email}`
       );
       toast.success(res.data.message);
       setRefresh(!refresh);

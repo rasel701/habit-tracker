@@ -12,7 +12,9 @@ const DetailsPage = () => {
 
   useEffect(() => {
     const detailsFun = async () => {
-      const result = await axios(`http://localhost:3000/habit-info/${id}`);
+      const result = await axios(
+        `https://habit-server-psi.vercel.app/habit-info/${id}`
+      );
       const response = result.data;
       setHabit(response);
     };
@@ -22,7 +24,7 @@ const DetailsPage = () => {
   const handleMarkComplete = async () => {
     try {
       const res = await axios(
-        `http://localhost:3000/mark-complete/${id}?userEmail=${user.email}`
+        `https://habit-server-psi.vercel.app/mark-complete/${id}?userEmail=${user.email}`
       );
       toast.success(res.data.message);
       setRefresh(!refresh);

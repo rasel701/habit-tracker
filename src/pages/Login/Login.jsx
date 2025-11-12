@@ -67,7 +67,7 @@ const Login = () => {
                 <input
                   name="email"
                   type="email"
-                  // placeholder="Email Address"
+                  placeholder="Email Address"
                   className="w-full input input-bordered bg-white text-gray-800 border-none h-14 text-lg placeholder-gray-400"
                   required
                 />
@@ -83,7 +83,7 @@ const Login = () => {
                 <input
                   name="password"
                   type="password"
-                  // placeholder="Password"
+                  placeholder="Password"
                   className="w-full input input-bordered bg-white text-gray-800 border-none h-14 text-lg placeholder-gray-400"
                   required
                 />

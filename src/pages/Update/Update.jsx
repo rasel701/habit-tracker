@@ -25,7 +25,7 @@ const Update = () => {
 
     try {
       const result = await axios.patch(
-        `http://localhost:3000/habit-info/${data._id}`,
+        `https://habit-server-psi.vercel.app/habit-info/${data._id}`,
         newObj
       );
       const response = result.data;

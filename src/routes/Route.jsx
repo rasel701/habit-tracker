@@ -22,7 +22,7 @@ const route = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => axios("http://localhost:3000/habit-latest"),
+        loader: () => axios("https://habit-server-psi.vercel.app/habit-latest"),
       },
       {
         path: "/my-habit",
@@ -51,7 +51,7 @@ const route = createBrowserRouter([
       {
         path: "/public-habit",
         Component: PublicHabit,
-        loader: () => axios("http://localhost:3000/habit-info"),
+        loader: () => axios("https://habit-server-psi.vercel.app/habit-info"),
       },
       {
         path: "/update/:id",
@@ -61,7 +61,7 @@ const route = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: ({ params }) =>
-          axios(`http://localhost:3000/habit-info/${params.id}`),
+          axios(`https://habit-server-psi.vercel.app/habit-info/${params.id}`),
       },
       {
         path: "/details-page/:id",

@@ -31,7 +31,7 @@ const AddHabit = () => {
     console.log(newHabit);
     try {
       const result = await axios.post(
-        "http://localhost:3000/habit-info",
+        "https://habit-server-psi.vercel.app/habit-info",
         newHabit
       );
       const response = result.data;

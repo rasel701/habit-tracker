@@ -24,7 +24,7 @@ const PublicHabit = () => {
 
     try {
       const result = await axios(
-        `http://localhost:3000/habit-category?category=${selectCategory}`
+        `https://habit-server-psi.vercel.app/habit-category?category=${selectCategory}`
       );
       const response = result.data;
       setHabits(response);
@@ -39,7 +39,7 @@ const PublicHabit = () => {
 
     try {
       const result = await axios(
-        `http://localhost:3000/habit-search?search=${search}`
+        `https://habit-server-psi.vercel.app/habit-search?search=${search}`
       );
       const response = result.data;
       setHabits(response);
