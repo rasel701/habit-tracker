@@ -14,15 +14,6 @@ const CustomNavLink = ({ to, children }) => {
       }
     >
       {children}
-
-      {/* Small check mark when active */}
-      {({ isActive }) =>
-        isActive && (
-          <span className="absolute right-2 top-1/2 -translate-y-1/2 text-white">
-            ✔
-          </span>
-        )
-      }
     </NavLink>
   );
 };

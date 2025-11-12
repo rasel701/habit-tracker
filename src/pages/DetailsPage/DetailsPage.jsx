@@ -10,19 +10,6 @@ const DetailsPage = () => {
   const [habit, setHabit] = useState({});
   const [refresh, setRefresh] = useState(false);
 
-  // const [habit, setHabit] = useState({
-  //   _id: "691187f56481964ae07696ca",
-  //   title: "Read Books",
-  //   description: "Read 20 pages of a book daily before bed",
-  //   category: "Evening",
-  //   reminderTime: "09:00 PM",
-  //   image: "https://i.ibb.co/N9dc9k5/read-book.jpg",
-  //   userName: "Sadia",
-  //   userEmail: "sadia@gmail.com",
-  //   completionHistory: ["2025-11-02", "2025-11-03", "2025-11-04"],
-  //   createdAt: "2025-10-28",
-  // });
-
   useEffect(() => {
     const detailsFun = async () => {
       const result = await axios(`http://localhost:3000/habit-info/${id}`);
@@ -51,7 +38,7 @@ const DetailsPage = () => {
   const last30Days = [...Array(30)].map((_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    return d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear(); // "MM/DD/YYYY"
+    return d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
   });
   const completedDays = habit?.completionHistory?.filter((date) =>
     last30Days.includes(date)
@@ -83,9 +70,6 @@ const DetailsPage = () => {
       break;
     }
   }
-
-  console.log(progress);
-  console.log(habit);
 
   return (
     <div>

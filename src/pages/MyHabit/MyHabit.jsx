@@ -25,7 +25,7 @@ const MyHabit = () => {
       }
     };
     myHabitFun();
-  }, [user.email, refresh]);
+  }, [user.email]);
 
   const handleDelete = async (id) => {
     Swal.fire({
@@ -40,7 +40,8 @@ const MyHabit = () => {
       if (result.isConfirmed) {
         try {
           const result = await axios.delete(
-            `http://localhost:3000/habit-info/${id}`
+            `http://localhost:3000/habit-info/${id}?email=${user.email}`,
+            { headers: { authorization: `Bearer ${user.accessToken}` } }
           );
           const response = result.data;
           console.log(response);
@@ -52,10 +53,10 @@ const MyHabit = () => {
 
           setHabits((prev) => prev.filter((habit) => habit._id !== id));
         } catch (error) {
-          console.error(error);
+          console.error(error?.response?.data.message);
           Swal.fire({
             title: "Error!",
-            text: "Something went wrong.",
+            text: error?.response?.data.message || "Something went wrong.",
             icon: "error",
           });
         }

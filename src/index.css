@@ -33,7 +33,6 @@
   animation: ripple 0.6s linear infinite;
 }
 
-/* From Uiverse.io by ShrinilDhorda */
 .btn-all {
   font-size: 1.2rem;
   padding: 1rem 2.5rem;
@@ -74,8 +73,6 @@
       0 0 0 80px rgba(255, 255, 255, 0);
   }
 }
-
-/* animated-button */
 
 .animated-button {
   position: relative;

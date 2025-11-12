@@ -88,7 +88,6 @@ const PublicHabit = () => {
         </div>
         <div className="mb-9 flex justify-center ">
           <select
-            // defaultValue="Pick a color"
             onChange={handleChange}
             className="select appearance-none z-20"
           >
@@ -102,9 +101,19 @@ const PublicHabit = () => {
         </div>
       </div>
       <div className="max-w-[90%] mx-auto grid lg:grid-cols-3 gap-5 justify-center items-center md:grid-cols-2">
-        {habits?.map((item) => (
-          <PublicHabitCard key={item._id} item={item} />
-        ))}
+        {habits.length > 0 ? (
+          <>
+            {habits?.map((item) => (
+              <PublicHabitCard key={item._id} item={item} />
+            ))}
+          </>
+        ) : (
+          <div className="col-span-full text-center py-10">
+            <h2 className="text-2xl font-semibold text-gray-500">
+              No habits found
+            </h2>
+          </div>
+        )}
       </div>
     </div>
   );
