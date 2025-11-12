@@ -9,7 +9,7 @@ const Home = () => {
   const { data } = useLoaderData();
   // console.log(data);
   return (
-    <div>
+    <div className="max-w-[90%] mx-auto">
       <Banner />
       <LastHabit habits={data} />
       <WhyBuildHabits />

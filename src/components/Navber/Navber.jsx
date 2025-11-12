@@ -88,8 +88,8 @@ const Navber = () => {
                 tabIndex="-1"
                 className="dropdown-content menu bg-base-100 rounded-box z-50 w-45 p-2 shadow-sm md:w-65  "
               >
-                <li className="text-lg">{user?.displayName}</li>
-                <li className="text-lg my-2">{user?.email}</li>
+                <li className="md:text-lg text-[12px]">{user?.displayName}</li>
+                <li className=" text-[12px] md:text-lg my-2">{user?.email}</li>
                 <div>
                   <button onClick={handleLogout} className="btn-all rounded-lg">
                     Logout
