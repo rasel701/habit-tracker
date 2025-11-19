@@ -82,7 +82,7 @@ Habit-Hero/
 
 ### 1️⃣ Clone the Repository  
 ```sh
-git clone https://github.com/YOUR_USERNAME/Habit-Hero.git
+git clone https://github.com/rasel701/habit-tracker.git
 ```
 
 ### 2️⃣ Install Dependencies  
