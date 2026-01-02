@@ -2,118 +2,179 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import PublicHabitCard from "../../components/PublicHabitCard/PublicHabitCard";
 import axios from "axios";
-import Loading from "../../components/Loading/Loading";
+import Typography from "@mui/material/Typography";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 const PublicHabit = () => {
   const { data } = useLoaderData();
+
   const [habits, setHabits] = useState(data);
   const [allCategory, setAllCategory] = useState([]);
+  const [allDates, setAllDates] = useState([]);
+
+  const [category, setCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedDate, setSelectedDate] = useState("All");
+
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const perItem = 4;
+
   useEffect(() => {
-    const uniqueCategories = [...new Set(data.map((item) => item.category))];
-    setAllCategory(uniqueCategories);
+    setAllCategory([...new Set(data.map((item) => item.category))]);
+    setAllDates([
+      ...new Set(data.map((item) => item.createdAt || item.createAt)),
+    ]);
   }, [data]);
-  // console.log(allCategory);
 
-  const handleChange = async (e) => {
-    const selectCategory = e.target.value;
+  const applyFilters = (baseData, cat, search, date) => {
+    let filtered = [...baseData];
 
-    if (selectCategory === "All") {
-      return setHabits(data);
+    if (cat !== "All") {
+      filtered = filtered.filter((item) => item.category === cat);
     }
 
-    try {
-      const result = await axios(
-        `https://habit-server-psi.vercel.app/habit-category?category=${selectCategory}`
+    if (search) {
+      filtered = filtered.filter((item) =>
+        item.title.toLowerCase().includes(search.toLowerCase())
       );
-      const response = result.data;
-      setHabits(response);
-    } catch (error) {
-      console.log(error);
     }
+
+    if (date !== "All") {
+      filtered = filtered.filter(
+        (item) => item.createdAt === date || item.createAt === date
+      );
+    }
+
+    return filtered;
   };
 
-  const handleInputSubmit = async (e) => {
+  const handleCategoryChange = async (e) => {
+    const value = e.target.value;
+    setCategory(value);
+    setPage(1);
+    setLoading(true);
+
+    try {
+      let base =
+        value === "All"
+          ? data
+          : (
+              await axios.get(
+                `https://habit-server-psi.vercel.app/habit-category?category=${value}`
+              )
+            ).data;
+
+      const result = applyFilters(base, value, searchTerm, selectedDate);
+      setHabits(result);
+    } catch {
+      setHabits([]);
+    }
+
+    setLoading(false);
+  };
+
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    const search = e.target.search.value;
+    const value = e.target.search.value;
+    setSearchTerm(value);
+    setPage(1);
+    setLoading(true);
 
     try {
-      const result = await axios(
-        `https://habit-server-psi.vercel.app/habit-search?search=${search}`
-      );
-      const response = result.data;
-      setHabits(response);
-    } catch (error) {
-      console.log(error);
+      const base = (
+        await axios.get(
+          `https://habit-server-psi.vercel.app/habit-search?search=${value}`
+        )
+      ).data;
+
+      const result = applyFilters(base, category, value, selectedDate);
+      setHabits(result);
+    } catch {
+      setHabits([]);
     }
+
+    setLoading(false);
   };
+
+  const handleDateChange = (e) => {
+    const value = e.target.value;
+    setSelectedDate(value);
+    setPage(1);
+
+    const result = applyFilters(data, category, searchTerm, value);
+    setHabits(result);
+  };
+
+  const totalPage = Math.ceil(habits.length / perItem);
+  const start = (page - 1) * perItem;
+  const paginatedHabits = habits.slice(start, start + perItem);
 
   return (
-    <div className="">
+    <div>
       <h2 className="text-4xl text-center my-7 font-bold text-gray-500">
-        All public habits
+        All Public Habits
       </h2>
-      <div className="flex justify-between max-w-[90%] mx-auto md:flex-row flex-col">
-        <div className="flex-1">
-          <form
-            onSubmit={handleInputSubmit}
-            className="flex justify-center  items-center gap-3 lg:justify-start mb-9 "
-          >
-            <label className="input">
-              <svg
-                className="h-[1em] opacity-50"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2.5"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="m21 21-4.3-4.3"></path>
-                </g>
-              </svg>
-              <input name="search" type="search" placeholder="Search" />
-            </label>
-            <button
-              type="submit"
-              className="btn rounded-lg bg-cyan-300 text-lg text-white"
-            >
-              Search
-            </button>
-          </form>
-        </div>
-        <div className="mb-9 flex justify-center ">
-          <select
-            onChange={handleChange}
-            className="select appearance-none z-20"
-          >
-            <option value="All">All habit</option>
-            {allCategory?.map((item, index) => (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </div>
+
+      <div className="flex justify-between max-w-[90%] mx-auto md:flex-row flex-col mb-9">
+        <form onSubmit={handleSearchSubmit} className="flex gap-3">
+          <input name="search" className="input" placeholder="Search..." />
+          <button className="btn bg-cyan-500 text-white">Search</button>
+        </form>
+
+        <select
+          value={category}
+          onChange={handleCategoryChange}
+          className="select"
+        >
+          <option value="All">All Categories</option>
+          {allCategory.map((c, i) => (
+            <option key={i}>{c}</option>
+          ))}
+        </select>
+
+        <select
+          value={selectedDate}
+          onChange={handleDateChange}
+          className="select"
+        >
+          <option value="All">All Dates</option>
+          {allDates.map((d, i) => (
+            <option key={i}>{d}</option>
+          ))}
+        </select>
       </div>
-      <div className="max-w-[90%] mx-auto grid lg:grid-cols-3 gap-5 justify-center items-center md:grid-cols-2">
-        {habits.length > 0 ? (
-          <>
-            {habits?.map((item) => (
-              <PublicHabitCard key={item._id} item={item} />
-            ))}
-          </>
+
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 max-w-[90%] mx-auto">
+        {loading ? (
+          [...Array(4)].map((_, i) => (
+            <div
+              key={i}
+              className="animate-pulse h-64 bg-gray-200 rounded-xl"
+            />
+          ))
+        ) : paginatedHabits.length ? (
+          paginatedHabits.map((item) => (
+            <PublicHabitCard key={item._id} item={item} />
+          ))
         ) : (
-          <div className="col-span-full text-center py-10">
-            <h2 className="text-2xl font-semibold text-gray-500">
-              No habits found
-            </h2>
-          </div>
+          <p className="col-span-full text-center text-xl text-gray-500">
+            No habits found
+          </p>
         )}
+      </div>
+
+      <div className="flex justify-center mt-10">
+        <Stack spacing={2}>
+          <Typography>Page: {page}</Typography>
+          <Pagination
+            count={totalPage}
+            page={page}
+            onChange={(e, v) => setPage(v)}
+          />
+        </Stack>
       </div>
     </div>
   );
