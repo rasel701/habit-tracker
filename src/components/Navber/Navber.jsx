@@ -38,6 +38,10 @@ const Navber = () => {
         toast.error(error.message);
       });
   };
+
+  const helloFun = () => {
+    alert("Hello Users");
+  };
   const links = (
     <>
       <li>
