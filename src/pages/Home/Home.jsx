@@ -4,6 +4,8 @@ import LastHabit from "../../components/LastHabit/LastHabit";
 import WhyBuildHabits from "../../components/WhyBuildHabits/WhyBuildHabits";
 import SuccessSection from "../../components/SuccessSection/SuccessSection";
 import ExtraSections from "../../components/ExtraSections/ExtraSections";
+import Faqsection from "../../components/FAQSection/Faqsection";
+import BlogSection from "../../components/Blogs/BlogSection";
 
 const Home = () => {
   const { data } = useLoaderData();
@@ -15,6 +17,8 @@ const Home = () => {
       <WhyBuildHabits />
       <SuccessSection />
       <ExtraSections />
+      <Faqsection />
+      <BlogSection />
     </div>
   );
 };

@@ -82,6 +82,7 @@ const MyHabit = () => {
   };
 
   const calculateStreak = (completionHistory) => {
+    console.log(completionHistory);
     if (!completionHistory || completionHistory.length === 0) return 0;
 
     const sortedHistory = completionHistory
