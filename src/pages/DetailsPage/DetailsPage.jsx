@@ -32,7 +32,7 @@ const DetailsPage = () => {
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
-        console.log("Something went wrong!");
+        toast.error("Something went wrong! please login ");
       }
     }
   };

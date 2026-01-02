@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router";
 
 // Sample blogs data with long description (~200 words)
 const blogs = [
@@ -155,9 +156,12 @@ const BlogSection = () => {
                         <Clock size={14} /> {blog.readTime}
                       </span>
                     </div>
-                    <button className="btn btn-sm btn-primary btn-circle group-hover:scale-110 transition-transform">
+                    <Link
+                      to={`/blog-details/${blog.id}`}
+                      className="btn btn-sm btn-primary btn-circle group-hover:scale-110 transition-transform"
+                    >
                       <ArrowRight size={16} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

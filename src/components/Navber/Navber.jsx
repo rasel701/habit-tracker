@@ -39,9 +39,6 @@ const Navber = () => {
       });
   };
 
-  const helloFun = () => {
-    alert("Hello Users");
-  };
   const links = (
     <>
       <li>

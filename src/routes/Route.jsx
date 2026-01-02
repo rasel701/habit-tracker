@@ -12,6 +12,7 @@ import axios from "axios";
 import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Loading from "../components/Loading/Loading";
 import NotFound from "../pages/NotFound/NotFound";
+import BlogDetails from "../pages/BlogDetails/BlogDetails";
 
 const route = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const route = createBrowserRouter([
         ),
       },
       {
+        path: "/blog-details/:id",
+        Component: BlogDetails,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -65,11 +70,7 @@ const route = createBrowserRouter([
       },
       {
         path: "/details-page/:id",
-        element: (
-          <ProtectedRoute>
-            <DetailsPage />
-          </ProtectedRoute>
-        ),
+        element: <DetailsPage />,
       },
     ],
   },
