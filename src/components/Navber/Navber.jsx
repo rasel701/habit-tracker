@@ -60,14 +60,7 @@ const Navber = () => {
           </li>
 
           <li>
-            <CustomNavLink to={"/my-habit"}>My Habit</CustomNavLink>
-          </li>
-          <li>
-            <CustomNavLink>
-              <li>
-                <CustomNavLink to="/dashboard">Dashboard</CustomNavLink>
-              </li>
-            </CustomNavLink>
+            <CustomNavLink to="/dashboard">Dashboard</CustomNavLink>
           </li>
         </>
       )}

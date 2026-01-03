@@ -60,7 +60,7 @@ const AddHabit = () => {
               name="title"
               required
               placeholder="Enter habit title"
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition text-gray-600"
             />
           </div>
 
@@ -73,7 +73,7 @@ const AddHabit = () => {
               name="description"
               required
               placeholder="Write a short description..."
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition text-gray-600"
             ></textarea>
           </div>
 
@@ -84,7 +84,7 @@ const AddHabit = () => {
             <select
               name="category"
               required
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition text-gray-600"
             >
               <option value="">Select a category</option>
               <option value="Morning">Morning</option>
@@ -105,7 +105,7 @@ const AddHabit = () => {
               type="text"
               name="habitImage"
               placeholder="Paste ImgBB image URL"
-              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition"
+              className="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none transition text-gray-600"
             />
           </div>
 

@@ -13,6 +13,9 @@ import DetailsPage from "../pages/DetailsPage/DetailsPage";
 import Loading from "../components/Loading/Loading";
 import NotFound from "../pages/NotFound/NotFound";
 import BlogDetails from "../pages/BlogDetails/BlogDetails";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import DashboardHome from "../pages/DahsboardHome/DashboardHome";
+import WeeklySummary from "../pages/WeeklySummary/WeeklySummary";
 
 const route = createBrowserRouter([
   {
@@ -71,6 +74,28 @@ const route = createBrowserRouter([
       {
         path: "/details-page/:id",
         element: <DetailsPage />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    Component: Dashboard,
+    children: [
+      {
+        index: true,
+        Component: DashboardHome,
+      },
+      {
+        path: "my-habit",
+        element: (
+          <ProtectedRoute>
+            <MyHabit />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "weekly-summary",
+        element: <WeeklySummary />,
       },
     ],
   },

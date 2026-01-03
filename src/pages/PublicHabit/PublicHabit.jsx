@@ -8,7 +8,7 @@ import Stack from "@mui/material/Stack";
 
 const PublicHabit = () => {
   const { data } = useLoaderData();
-
+  console.log(data);
   const [habits, setHabits] = useState(data);
   const [allCategory, setAllCategory] = useState([]);
   const [allDates, setAllDates] = useState([]);
@@ -118,7 +118,7 @@ const PublicHabit = () => {
         All Public Habits
       </h2>
 
-      <div className="flex justify-between max-w-[90%] mx-auto md:flex-row flex-col mb-9">
+      <div className="flex justify-between max-w-[90%] mx-auto md:flex-row gap-5 md:justify-center md:items-center flex-col mb-9">
         <form onSubmit={handleSearchSubmit} className="flex gap-3">
           <input name="search" className="input" placeholder="Search..." />
           <button className="btn bg-cyan-500 text-white">Search</button>
