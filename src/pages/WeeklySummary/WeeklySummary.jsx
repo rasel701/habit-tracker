@@ -65,22 +65,13 @@ const WeeklySummary = () => {
     <div className="p-5">
       <h2 className="text-2xl font-bold mb-5">Weekly Habit Summary</h2>
 
-      <Paper
-        sx={{
-          p: 3,
-          minHeight: 360,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {loading ? (
-          <p className="text-gray-400">Loading weekly summary...</p>
-        ) : weeklyData.length > 0 ? (
+      <Paper sx={{ p: 3 }}>
+        {" "}
+        {weeklyData.length > 0 ? (
           <Chart options={options} series={series} type="bar" height={350} />
         ) : (
           <p>No data available</p>
-        )}
+        )}{" "}
       </Paper>
 
       <div className="mt-5">

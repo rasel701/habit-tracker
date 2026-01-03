@@ -16,6 +16,7 @@ import BlogDetails from "../pages/BlogDetails/BlogDetails";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import DashboardHome from "../pages/DahsboardHome/DashboardHome";
 import WeeklySummary from "../pages/WeeklySummary/WeeklySummary";
+import MyProfile from "../pages/MyProfile/MyProfile";
 
 const route = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const route = createBrowserRouter([
       {
         path: "weekly-summary",
         element: <WeeklySummary />,
+      },
+      {
+        path: "my-profile",
+        element: <MyProfile />,
       },
     ],
   },

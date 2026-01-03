@@ -373,7 +373,7 @@ const Dashboard = () => {
                   </li>
                   <li>
                     <Link
-                      to="/profile"
+                      to="/dashboard/my-profile"
                       className="flex items-center gap-2 py-3 text-gray-500"
                     >
                       <User size={18} /> Profile
