@@ -277,7 +277,13 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router";
 import { UserAuthContext } from "../../contexts/AuthContext";
-import { HomeIcon, LayoutDashboard, LogOut, User } from "lucide-react";
+import {
+  HomeIcon,
+  LayoutDashboard,
+  LayoutDashboardIcon,
+  LogOut,
+  User,
+} from "lucide-react";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
@@ -398,15 +404,26 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="drawer-side is-drawer-close:overflow-visible my-6">
+        <div className="drawer-side is-drawer-close:overflow-visible ">
           <label
             htmlFor="my-drawer-4"
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+          <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64 ">
             {/* Sidebar content here */}
-            <ul className="menu w-full grow">
+
+            <ul className="menu w-full grow my-12 ">
+              <li>
+                <Link
+                  to={"/dashboard"}
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="hashhboardhome"
+                >
+                  <LayoutDashboardIcon size={18} />
+                  <span className="is-drawer-close:hidden">Dashboard Home</span>
+                </Link>
+              </li>
               {/* List item */}
               <li>
                 <Link
@@ -424,10 +441,19 @@ const Dashboard = () => {
                 <Link
                   to={"/dashboard/weekly-summary"}
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                  data-tip="Settings"
+                  data-tip="weeklySummary"
                 >
                   <AccessTimeIcon size={18} />
                   <span className="is-drawer-close:hidden">Weekly Summary</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/dashboard/my-profile"
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="profile"
+                >
+                  <User size={18} /> Profile
                 </Link>
               </li>
             </ul>

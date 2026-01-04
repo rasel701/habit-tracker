@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 
-// Sample blogs data with long description (~200 words)
 const blogs = [
   {
     id: 1,
@@ -78,13 +77,11 @@ const blogs = [
 const BlogSection = () => {
   const [loading, setLoading] = useState(true);
 
-  // Simulate API loading
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Function to get short description (approx 40 words)
   const getShortDesc = (text, wordCount = 40) => {
     const words = text.split(" ");
     if (words.length <= wordCount) return text;
@@ -92,11 +89,10 @@ const BlogSection = () => {
   };
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-gray-50 mx-auto max-w-[90%] rounded-lg">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-600">
             Knowledge <span className="text-primary">Hub</span>
           </h2>
           <div className="w-24 h-1.5 bg-primary mx-auto rounded-full mb-6"></div>
@@ -106,7 +102,6 @@ const BlogSection = () => {
           </p>
         </div>
 
-        {/* Blog Grid */}
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[...Array(4)].map((_, i) => (
@@ -126,7 +121,6 @@ const BlogSection = () => {
                 transition={{ duration: 0.5, delay: index * 0.15 }}
                 className="group bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-2xl transition-all duration-500 flex flex-col h-full"
               >
-                {/* Image */}
                 <div className="relative h-48">
                   <img
                     src={blog.image}
@@ -138,15 +132,13 @@ const BlogSection = () => {
                   </span>
                 </div>
 
-                {/* Body */}
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-lg font-bold mb-2">{blog.title}</h3>
-                  {/* Short Description */}
+
                   <p className="text-gray-500 text-sm mb-4 flex-1">
                     {getShortDesc(blog.description, 40)}
                   </p>
 
-                  {/* Meta + CTA */}
                   <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
                     <div className="flex items-center gap-2 text-xs text-gray-400">
                       <span className="flex items-center gap-1">

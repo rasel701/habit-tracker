@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { TbHandLoveYou } from "react-icons/tb";
+import { Link } from "react-router";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -74,32 +75,35 @@ const Footer = () => {
             <h4 className="text-lg font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="/home" className="hover:text-white transition">
+                <Link to="/" className="hover:text-white transition">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/public-habits"
+                <Link
+                  to="/public-habit"
                   className="hover:text-white transition"
                 >
                   Public Habits
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/featured" className="hover:text-white transition">
+                <Link
+                  to="/featured-habits"
+                  className="hover:text-white transition"
+                >
                   Featured Habits
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="hover:text-white transition">
+                <Link to="/about" className="hover:text-white transition">
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="hover:text-white transition">
+                <Link to="/contact" className="hover:text-white transition">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
 

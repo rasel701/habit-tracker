@@ -21,7 +21,7 @@ const DashboardHome = () => {
   }, [user?.email]);
 
   return (
-    <div style={{ maxWidth: "800px", margin: "auto", padding: "20px" }}>
+    <div>
       <h2 className="text-3xl font-bold mb-4 ">Dashboard Overview</h2>
 
       <header className="mb-8 text-center">
@@ -56,7 +56,7 @@ const DashboardHome = () => {
           </p>
         </div>
       </div>
-      <div className="flex justify-around items-center flex-col md:flex-row gap-4 ">
+      <div className="flex justify-around items-center flex-col md:flex-row gap-4 w-full ">
         <MyCategoryChart mychart={data?.categoryStats} />
 
         <AllCategoryChart />
@@ -67,3 +67,5 @@ const DashboardHome = () => {
 };
 
 export default DashboardHome;
+
+//

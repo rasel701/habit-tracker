@@ -6,6 +6,7 @@ import SuccessSection from "../../components/SuccessSection/SuccessSection";
 import ExtraSections from "../../components/ExtraSections/ExtraSections";
 import Faqsection from "../../components/FAQSection/Faqsection";
 import BlogSection from "../../components/Blogs/BlogSection";
+import FeaturedHabits from "../FeaturedHabits/FeaturedHabits";
 
 const Home = () => {
   const { data } = useLoaderData();
@@ -19,6 +20,7 @@ const Home = () => {
       <ExtraSections />
       <Faqsection />
       <BlogSection />
+      <FeaturedHabits />
     </div>
   );
 };

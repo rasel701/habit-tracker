@@ -10,7 +10,7 @@ const ExtraSections = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
-        className="bg-gradient-to-r from-blue-50 to-purple-50 p-10 rounded-2xl shadow-lg text-center"
+        className="bg-gray-50 p-10 rounded-2xl shadow-lg text-center"
       >
         <h2 className="text-3xl font-bold text-gray-700 mb-5">
           Why Build Positive Habits?
@@ -79,7 +79,7 @@ const ExtraSections = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false }}
-        className="bg-gradient-to-r from-green-50 to-teal-50 p-10 rounded-2xl shadow-lg text-center"
+        className="bg-gray-50 p-10 rounded-2xl shadow-lg text-center"
       >
         <h2 className="text-3xl font-bold text-gray-700 mb-5">
           Join Our Habit-Building Community

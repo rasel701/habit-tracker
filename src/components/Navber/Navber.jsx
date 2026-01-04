@@ -67,7 +67,7 @@ const Navber = () => {
   );
   return (
     <div className="sticky top-0 z-[100] w-full backdrop-blur-lg bg-base-100/80 border-b border-base-200">
-      <div className="navbar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="navbar max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">

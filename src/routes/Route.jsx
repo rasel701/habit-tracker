@@ -17,6 +17,8 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import DashboardHome from "../pages/DahsboardHome/DashboardHome";
 import WeeklySummary from "../pages/WeeklySummary/WeeklySummary";
 import MyProfile from "../pages/MyProfile/MyProfile";
+import AboutSection from "../pages/AboutSection/AboutSection";
+import FeaturedHabits from "../pages/FeaturedHabits/FeaturedHabits";
 
 const route = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ const route = createBrowserRouter([
             <MyHabit />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/about",
+        Component: AboutSection,
+      },
+      {
+        path: "/featured-habits",
+        Component: FeaturedHabits,
       },
       {
         path: "/add-habit",
@@ -84,7 +94,11 @@ const route = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: DashboardHome,
+        element: (
+          <ProtectedRoute>
+            <DashboardHome />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-habit",
@@ -96,11 +110,19 @@ const route = createBrowserRouter([
       },
       {
         path: "weekly-summary",
-        element: <WeeklySummary />,
+        element: (
+          <ProtectedRoute>
+            <WeeklySummary />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "my-profile",
-        element: <MyProfile />,
+        element: (
+          <ProtectedRoute>
+            <MyProfile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

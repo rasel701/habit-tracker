@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateCurrentUser,
+  updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase";
@@ -48,6 +50,13 @@ const AuthContext = ({ children }) => {
     };
   }, []);
 
+  const updateUser = (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
+
   return (
     <UserAuthContext.Provider
       value={{
@@ -58,6 +67,7 @@ const AuthContext = ({ children }) => {
         logoutUser,
         setUser,
         loading,
+        updateUser,
       }}
     >
       {children}

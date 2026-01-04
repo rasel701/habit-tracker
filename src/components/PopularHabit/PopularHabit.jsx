@@ -20,13 +20,12 @@ const PopularHabit = () => {
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "title", headerName: "Title", width: 200 },
-    { field: "category", headerName: "Category", width: 130 },
+    { field: "title", headerName: "Title", width: 250 },
+    { field: "category", headerName: "Category", width: 180 },
     {
       field: "createdAt",
       headerName: "CreatedAt",
-      type: "number",
-      width: 90,
+      width: 190,
     },
     {
       field: "userName",
@@ -46,7 +45,7 @@ const PopularHabit = () => {
   const paginationModel = { page: 0, pageSize: 5 };
 
   return (
-    <div className="my-25">
+    <div className="mt-20">
       <h2 className="text-center text-3xl font-bold  text-gray-500 mb-7">
         Popular Habit
       </h2>
