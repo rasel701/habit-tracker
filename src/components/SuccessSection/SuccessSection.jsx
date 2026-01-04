@@ -41,7 +41,7 @@ const SuccessSection = () => {
   }, []);
   return (
     <div className="max-w-[90%] mx-auto ">
-      <h2 className="text-3xl font-bold mb-10 text-center text-gray-500 ">
+      <h2 className="text-3xl font-bold mb-10 text-center text-gray-500 my-22">
         Advice from Successful People
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 py-5 justify-items-center gap-8  items-center">

@@ -6,13 +6,13 @@ import Loading from "../components/Loading/Loading";
 
 const Root = () => {
   const navigation = useNavigation();
-  // console.log(navigation);
+
   return (
-    <div>
-      <header>
-        <Navber />
-      </header>
+    <div className="min-h-screen">
+      <Navber />
+
       <main>{navigation.state === "loading" ? <Loading /> : <Outlet />}</main>
+
       <footer>
         <Footer />
       </footer>

@@ -453,7 +453,8 @@ const Dashboard = () => {
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="profile"
                 >
-                  <User size={18} /> Profile
+                  <User size={18} />
+                  <span className="is-drawer-close:hidden">Profile</span>
                 </Link>
               </li>
             </ul>

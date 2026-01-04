@@ -37,7 +37,7 @@ const FeaturedHabits = () => {
   }
 
   return (
-    <section className="py-20 bg-gray-50 rounded-lg my-10 max-w-[90%] mx-auto">
+    <section className="py-16 bg-gray-50 rounded-lg my-10 max-w-[85%] mx-auto">
       <div className="max-w-[1600px] mx-auto px-6">
         {" "}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">

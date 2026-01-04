@@ -10,17 +10,17 @@ import FeaturedHabits from "../FeaturedHabits/FeaturedHabits";
 
 const Home = () => {
   const { data } = useLoaderData();
-  // console.log(data);
+
   return (
-    <div className="max-w-[90%] mx-auto">
+    <div className="max-w-[90%] mx-auto min-h-screen space-y-24">
       <Banner />
-      <LastHabit habits={data} />
       <WhyBuildHabits />
+      <FeaturedHabits />
+      <LastHabit habits={data} />
       <SuccessSection />
+      <BlogSection />
       <ExtraSections />
       <Faqsection />
-      <BlogSection />
-      <FeaturedHabits />
     </div>
   );
 };

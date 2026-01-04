@@ -1,17 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
 import { UserAuthContext } from "../../contexts/AuthContext";
 import { toast } from "react-toastify";
 import CustomNavLink from "../CustomNavLink/CustomNavLink";
-import {
-  Moon,
-  Sun,
-  Menu,
-  X,
-  LogOut,
-  LayoutDashboard,
-  User,
-} from "lucide-react";
+import { Moon, Sun, Menu, LogOut, LayoutDashboard, User } from "lucide-react";
 
 const Navber = () => {
   const { user, logoutUser } = useContext(UserAuthContext);
@@ -24,40 +16,33 @@ const Navber = () => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   const handleLogout = () => {
     logoutUser()
-      .then(() => {
-        toast.success("Logout successfully");
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+      .then(() => toast.success("Logout successfully"))
+      .catch((error) => toast.error(error.message));
   };
 
   const links = (
     <>
       <li>
-        <CustomNavLink to={"/"}>Home</CustomNavLink>
+        <CustomNavLink to="/">Home</CustomNavLink>
       </li>
       <li>
-        <CustomNavLink to={"/public-habit"}>Public Habits</CustomNavLink>
+        <CustomNavLink to="/public-habit">Public Habits</CustomNavLink>
       </li>
       <li>
-        <CustomNavLink to={"/about"}>About</CustomNavLink>
+        <CustomNavLink to="/about">About</CustomNavLink>
       </li>
       <li>
-        <CustomNavLink to={"/featured-habits"}>Featured Habits</CustomNavLink>
+        <CustomNavLink to="/featured-habits">Featured Habits</CustomNavLink>
       </li>
       {user?.email && (
         <>
           <li>
-            <CustomNavLink to={"/add-habit"}>Add Habit</CustomNavLink>
+            <CustomNavLink to="/add-habit">Add Habit</CustomNavLink>
           </li>
-
           <li>
             <CustomNavLink to="/dashboard">Dashboard</CustomNavLink>
           </li>
@@ -65,10 +50,10 @@ const Navber = () => {
       )}
     </>
   );
+
   return (
-    <div className="sticky top-0 z-[100] w-full backdrop-blur-lg bg-base-100/80 border-b border-base-200">
-      <div className="navbar max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Navbar Start */}
+    <div className="sticky top-0 left-0 max-w-[85%] mx-auto z-[100] backdrop-blur-lg bg-secondary border-b border-base-200 rounded-lg">
+      <div className="max-w-[90%] mx-auto navbar px-1 sm:px-1 lg:px-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -86,22 +71,19 @@ const Navber = () => {
             </ul>
           </div>
           <Link to="/" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-black tracking-tighter text-primary">
-              HABIT<span className="text-secondary">TRACKER</span>
+            <span className="text-lg md:text-2xl font-black tracking-tighter text-primary">
+              HABIT<span className="text-cyan-400">TRACKER</span>
             </span>
           </Link>
         </div>
 
-        {/* Navbar Center (Desktop) */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-medium gap-1">
             {links}
           </ul>
         </div>
 
-        {/* Navbar End */}
         <div className="navbar-end gap-2 md:gap-4">
-          {/* Dark Mode Toggle */}
           <button onClick={toggleTheme} className="btn btn-ghost btn-circle">
             {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
           </button>
@@ -158,14 +140,12 @@ const Navber = () => {
               </ul>
             </div>
           ) : (
-            <div className="flex gap-2">
-              <Link
-                to="/login"
-                className="btn btn-primary btn-sm md:btn-md rounded-lg px-6"
-              >
-                Login
-              </Link>
-            </div>
+            <Link
+              to="/login"
+              className="btn btn-primary btn-sm md:btn-md rounded-lg px-3 sm:px-4 md:px-6"
+            >
+              Login
+            </Link>
           )}
         </div>
       </div>

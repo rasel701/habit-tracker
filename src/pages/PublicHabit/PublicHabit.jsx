@@ -118,9 +118,12 @@ const PublicHabit = () => {
         All Public Habits
       </h2>
 
-      <div className="flex justify-between max-w-[90%] mx-auto md:flex-row gap-5 md:justify-center md:items-center flex-col mb-9">
-        <form onSubmit={handleSearchSubmit} className="flex gap-3">
-          <input name="search" className="input" placeholder="Search..." />
+      <div className="flex  max-w-[85%] mx-auto md:flex-row flex-col justify-center items-center gap-5 mb-9">
+        <form
+          onSubmit={handleSearchSubmit}
+          className="flex gap-3 justify-center items-center flex-1"
+        >
+          <input name="search" className="input  " placeholder="Search..." />
           <button className="btn bg-cyan-500 text-white">Search</button>
         </form>
 
@@ -147,7 +150,7 @@ const PublicHabit = () => {
         </select>
       </div>
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 max-w-[90%] mx-auto">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 max-w-[85%] mx-auto">
         {loading ? (
           [...Array(4)].map((_, i) => (
             <div
@@ -167,12 +170,25 @@ const PublicHabit = () => {
       </div>
 
       <div className="flex justify-center mt-10">
-        <Stack spacing={2}>
+        <Stack spacing={2} alignItems="center">
           <Typography>Page: {page}</Typography>
+
           <Pagination
             count={totalPage}
             page={page}
             onChange={(e, v) => setPage(v)}
+            sx={(theme) => ({
+              "& .MuiPaginationItem-root": {
+                color: theme.palette.text.primary,
+              },
+              "& .Mui-selected": {
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+              },
+              "& .MuiPaginationItem-root:hover": {
+                backgroundColor: theme.palette.action.hover,
+              },
+            })}
           />
         </Stack>
       </div>

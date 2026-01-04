@@ -100,11 +100,6 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-              <li>
-                <Link to="/contact" className="hover:text-white transition">
-                  Contact
-                </Link>
-              </li>
             </ul>
 
             <div className="mt-4">

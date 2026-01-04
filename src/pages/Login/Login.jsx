@@ -134,6 +134,7 @@ const Login = () => {
   const { loginUser, googleLogin } = useContext(UserAuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -239,7 +240,9 @@ const Login = () => {
 
             <div className="space-y-4">
               <button
-                onClick={() => googleLogin().then(() => navigate("/"))}
+                onClick={() =>
+                  googleLogin().then(() => navigate(location.state || "/"))
+                }
                 className="btn btn-outline w-full rounded-xl border-gray-400 hover:bg-gray-50 
                 text-gray-500
                 hover:text-gray-800 flex items-center justify-center gap-3 font-medium"
@@ -262,6 +265,7 @@ const Login = () => {
               <Link
                 to="/register"
                 className="text-blue-500 font-bold hover:underline"
+                state={location?.state}
               >
                 Register here
               </Link>

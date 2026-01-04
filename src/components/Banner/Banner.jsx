@@ -60,16 +60,13 @@ const Banner = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full h-full">
-              {/* Background Image */}
               <img
                 className="w-full h-full object-cover"
                 src={slide.image}
                 alt={slide.title}
               />
 
-              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex flex-col justify-center px-6 md:px-20">
-                {/* Animated Heading */}
                 <motion.h2
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +76,6 @@ const Banner = () => {
                   {slide.title}
                 </motion.h2>
 
-                {/* Animated Description */}
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +85,6 @@ const Banner = () => {
                   {slide.description}
                 </motion.p>
 
-                {/* Animated CTA Button */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -97,7 +92,7 @@ const Banner = () => {
                 >
                   <Link
                     to={slide.link}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-full text-sm md:text-base transition-transform hover:scale-105 shadow-lg"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-indigo-700 text-white font-medium rounded-full text-sm md:text-base transition-transform hover:scale-105 shadow-lg"
                   >
                     {slide.btnText} <ArrowRight size={20} />
                   </Link>
@@ -108,7 +103,6 @@ const Banner = () => {
         ))}
       </Swiper>
 
-      {/* Scroll hint */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white animate-bounce text-sm md:text-base opacity-80">
         ↓ Scroll to explore
       </div>

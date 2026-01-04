@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaUsers, FaChartLine, FaBrain, FaHandsHelping } from "react-icons/fa";
+import { Link } from "react-router";
 
 const ExtraSections = () => {
   return (
@@ -90,14 +91,16 @@ const ExtraSections = () => {
           accountable together.
         </p>
 
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.3 }}
-          className="px-8 py-3 bg-teal-500 text-white rounded-lg font-semibold shadow-md hover:bg-teal-600"
-        >
-          Join Now
-        </motion.button>
+        <Link to={"/public-habit"}>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.3 }}
+            className="px-8 py-3 bg-primary text-white rounded-lg font-semibold shadow-md "
+          >
+            Join Now
+          </motion.button>
+        </Link>
       </motion.div>
     </div>
   );
